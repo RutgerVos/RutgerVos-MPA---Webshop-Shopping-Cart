@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/homePage', function () {
+    return view('homePage',[
+       'name' => request('name')
+
+    ]);
+});
+Route::get('/posts/{post}','PostsController@show');
