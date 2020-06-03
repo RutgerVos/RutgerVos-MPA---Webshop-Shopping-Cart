@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/' ,"HomeController@index");
 
 Route::get('/homePage', function () {
     return view('homePage',[
@@ -23,4 +21,9 @@ Route::get('/homePage', function () {
 
     ]);
 });
-Route::get('/posts/{post}','PostsController@show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/user','UsersController@index');
+Route::get('/atricle','AtriclesController@index');
