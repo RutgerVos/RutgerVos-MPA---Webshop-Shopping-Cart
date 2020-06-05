@@ -27,3 +27,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user','UsersController@index');
 Route::get('/atricle','AtriclesController@index');
+Route::get('/categorie','CategoriesController@index');

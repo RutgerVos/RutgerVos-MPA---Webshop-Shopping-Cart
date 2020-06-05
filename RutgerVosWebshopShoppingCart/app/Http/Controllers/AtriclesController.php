@@ -10,7 +10,7 @@ class AtriclesController extends Controller
     public function index()
     {
     $user = User::find(1)->get();
-    dd($user);
+    //dd($user);
     return view('Articles');
     }
 }
