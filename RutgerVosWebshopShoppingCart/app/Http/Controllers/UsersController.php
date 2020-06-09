@@ -11,8 +11,8 @@ class UsersController extends Controller
 {
     public function index()
     {
-    // $user = User::find(1)->get();
-    // dd($user);
+     $user = User::find(1)->get();
+     dd($user);
     $users = DB::table('users')->get();
      return view('user.index', ['users' => $users]);
     }
@@ -21,4 +21,5 @@ class UsersController extends Controller
         $value = $request->session()->get('key');
         
     }
+    
 }

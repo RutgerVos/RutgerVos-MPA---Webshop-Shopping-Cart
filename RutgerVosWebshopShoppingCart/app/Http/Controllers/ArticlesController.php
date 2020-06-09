@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 
-class AtriclesController extends Controller
+class ArticlesController extends Controller
 {
     public function index()
     {
     $user = User::find(1)->get();
     //dd($user);
-    return view('Articles');
+    return view('articles');
+    }
+    public function list()
+    {
+
     }
 }

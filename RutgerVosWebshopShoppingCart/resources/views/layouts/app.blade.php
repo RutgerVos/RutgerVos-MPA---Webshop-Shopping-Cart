@@ -26,10 +26,10 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                    Home
                 </a>
-                <a class="navbar-brand" href="{{ url('/atricle') }}">
+                <a class="navbar-brand" href="{{ url('/articles') }}">
                    Articles
                 </a>
-                <a class="navbar-brand" href="{{ url('/categorie') }}">
+                <a class="navbar-brand" href="{{ url('/categories') }}">
                 categories
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -44,6 +44,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                    <a href="navbar-brand"><i class="fas fa-shopping-cart"></i></a>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
