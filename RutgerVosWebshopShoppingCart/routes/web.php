@@ -26,3 +26,4 @@ Route::get('/' ,"HomeController@index");
 Route::get('/user','UsersController@index');
 Route::get('/articles','ArticlesController@index');
 Route::get('/categories','CategoriesController@index');
+Route::get('/add-to-cart/{id}',['uses'=> 'ArticlesController@getAddToCart','as'=>'Articles.AddToCart']);

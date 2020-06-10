@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 class ShoppingCartController extends Controller
 {
+    
     public function addtoCart(){
-    $articleid = [];
+        $articleid;
 
     }
 
