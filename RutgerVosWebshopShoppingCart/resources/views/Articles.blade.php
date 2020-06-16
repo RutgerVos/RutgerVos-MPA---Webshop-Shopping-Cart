@@ -17,7 +17,7 @@ Articles
         <a href="/w3images/lights.jpg">
           <img src="/w3images/lights.jpg" alt="Lights" style="">
           <div class="caption">
-            <button type="button" class="btn btn-outline-primary"><a href="{{ route('Articles.AddToCart',['id'=>$article->id]) }}">add to cart</a></button>
+            <a type="button" class="btn btn-outline-primary"href="{{ route('ShoppingCart.getAddToCart',['id'=>$article->id]) }}">add to cart</a>
           </div>
         </a>
       </div>

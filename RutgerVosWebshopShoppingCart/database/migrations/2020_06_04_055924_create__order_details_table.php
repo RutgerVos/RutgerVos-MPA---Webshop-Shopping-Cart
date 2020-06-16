@@ -16,6 +16,7 @@ class CreateOrderDetailsTable extends Migration
         Schema::create('_order_details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            
         });
     }
 
