@@ -1,6 +1,6 @@
 <?php
 namespace App;
-
+use Session;
 
 class Cart
 {
@@ -11,15 +11,18 @@ class Cart
     /**
      * Construct the ShoppingCart.
      */
-    public function __construct($request){
-        if ($request->session()->has('cart')) {
-            $oldCart = $request->session()->get('cart');
+    public function __construct(){
+        if (Session::has('cart')) {
+            $oldCart = Session::get('cart');
             $this->items = $oldCart->items;
             $this->totalQty = $oldCart->totalQty;
             $this->totalPrice = $oldCart->totalPrice;
         }
     }
-
+    /*
+    *a function that creates data based on items values.
+    *
+    */
     public function add($item, $id){
         $storedItem = ['qty'=> 0, 'price'=>$item->price,'item'=>$item];
 
@@ -34,6 +37,23 @@ class Cart
         $this->items[$id] = $storedItem;
         $this->totalQty++;
         $this->totalPrice += $item->price;
+        Session::put('cart',$this);
+    }
+    public function removeOneItem($item, $id){
+        $storedItem = ['qty'=> 0, 'price'=>$item->price,'item'=>$item];
+
+        if ($this->items) {
+            if (array_key_exists($id,$this->items)) {
+                $storedItem = $this->items[$id];
+            }
+        }
+
+        $storedItem['qty']--;
+        $storedItem['price']= $item->price*$storedItem['qty'];
+        $this->items[$id] = $storedItem;
+        $this->totalQty--;
+        $this->totalPrice += $item->price;
+        
         
     }
 

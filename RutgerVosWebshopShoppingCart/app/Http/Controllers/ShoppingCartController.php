@@ -16,9 +16,17 @@ class ShoppingCartController extends Controller
     public function caculateCart(){
 
     }
-    public function removefromCart(){
+    /**
+     * remove item from the cart.
+     */
+    public function removeCartItem(Request $request,$id)
+        {
+            $Article = Articles::find($id);
+            $cart = new Cart($request);
+            $cart->removeOneItem($Article,$Article->id);
 
-    }
+
+        }
 
     /**
      * Get items from the cart.
@@ -31,18 +39,24 @@ class ShoppingCartController extends Controller
         return view('shoppingcart',['articles'=>$cartItems,'totalPrice'=>$cart->totalPrice]);
     }
     /*
-    *
+    *add a item to the cart
     */
     public function getAddToCart(Request $request,$id)
     {
         $Article = Articles::find($id);
         $cart = new Cart($request);
         $cart->add($Article,$Article->id);
+        //Session::put('cart',$cart);
 
         //$request->session()->put('cart',$cart);
         //dd($request->session()->get('cart'));
         return redirect()->route('articles.index');
 
+
+    }
+    public function getCheckOut(){
+        $cart = new Cart();
+        $cart->getCheckOut();
 
     }
 

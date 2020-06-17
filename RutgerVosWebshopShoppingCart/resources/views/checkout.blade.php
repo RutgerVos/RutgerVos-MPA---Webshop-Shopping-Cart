@@ -12,43 +12,43 @@ checkout
     <div class="div col-xs-12">
     <div class="div form-group">
     <label for="name">name</label>
-    <input type="text" class="form-control" id="name"required>
+    <input type="text" class="form-control" id="name"value=""required>
     </div>
     </div>
     <div class="div col-xs-12">
     <div class="div form-group">
     <label for="adress">adress</label>
-    <input type="text" class="form-control" id="adress"required>
+    <input type="text" class="form-control" id="adress"value=""required>
     </div>
     </div>
     <div class="div col-xs-12">
     <div class="div form-group">
     <label for="card">cardHolderName</label>
-    <input type="text" class="form-control" id="card-name"required>
+    <input type="text" class="form-control" id="card-name"value=""required>
     </div>
     </div>
     <div class="div col-xs-12">
     <div class="div form-group">
     <label for="card">creditCardNumber</label>
-    <input type="text" class="form-control" id="card-number"required>
+    <input type="text" class="form-control" id="card-number"value=""required>
     </div>
     </div>
     <div class="div col-xs-12">
     <div class="div form-group">
     <label for="card">expirationMonth</label>
-    <input type="text" class="form-control" id="card-expiry-month"required>
+    <input type="text" class="form-control" id="card-expiry-month"value=""required>
     </div>
     </div>
     <div class="div col-xs-12">
     <div class="div form-group">
     <label for="card">expirationYear</label>
-    <input type="text" class="form-control" id="card-expiry-year"required>
+    <input type="text" class="form-control" id="card-expiry-year"value=""required>
     </div>
     </div>
     <div class="div col-xs-12">
     <div class="div form-group">
     <label for="card-cvc">CVC</label>
-    <input type="text" class="form-control" id="card-cvc"required>
+    <input type="text" class="form-control" id="card-cvc"value=""required>
     </div>
     </div>
     </div>
