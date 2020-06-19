@@ -11,7 +11,8 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        $Article = new \App\Articles(['name'=>'harry tester','price'=>12,
+        $Article = new \App\Articles(['name'=>'harry tester',
+        'price'=>12,
         'description'=>'he tests al things that are tested']);
         $Article->save();
     }

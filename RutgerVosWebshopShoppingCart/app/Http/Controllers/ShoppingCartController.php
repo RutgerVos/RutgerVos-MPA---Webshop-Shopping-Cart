@@ -19,11 +19,12 @@ class ShoppingCartController extends Controller
     /**
      * remove item from the cart.
      */
-    public function removeCartItem(Request $request,$id)
+    public function removeCartItem($id)
         {
             $Article = Articles::find($id);
-            $cart = new Cart($request);
+            $cart = new Cart();
             $cart->removeOneItem($Article,$Article->id);
+            
 
 
         }
@@ -31,9 +32,9 @@ class ShoppingCartController extends Controller
     /**
      * Get items from the cart.
      */
-    public function getCartItems(Request $request)
+    public function getCartItems()
     {
-        $cart = new Cart($request);
+        $cart = new Cart();
         $cartItems = $cart->getItemsFromCart();
 
         return view('shoppingcart',['articles'=>$cartItems,'totalPrice'=>$cart->totalPrice]);
@@ -41,10 +42,10 @@ class ShoppingCartController extends Controller
     /*
     *add a item to the cart
     */
-    public function getAddToCart(Request $request,$id)
+    public function getAddToCart($id)
     {
         $Article = Articles::find($id);
-        $cart = new Cart($request);
+        $cart = new Cart();
         $cart->add($Article,$Article->id);
         //Session::put('cart',$cart);
 
@@ -56,7 +57,8 @@ class ShoppingCartController extends Controller
     }
     public function getCheckOut(){
         $cart = new Cart();
-        $cart->getCheckOut();
+        $total= $cart->getCheckOutCart();
+        return view('checkout',['total'=> $total]);
 
     }
 

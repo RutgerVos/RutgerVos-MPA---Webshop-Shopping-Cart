@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/' ,"HomeController@index");
-Route::get('/user','UsersController@index');
+Route::get('/user',['uses'=> 'UsersController@index','as'=>'user.profile']);
 Route::get('/articles','ArticlesController@index');
 Route::get('/categories','CategoriesController@index');
 Route::get('/add-to-cart/{id}',['uses'=> 'ShoppingCartController@getAddToCart','as'=>'ShoppingCart.getAddToCart']);
@@ -32,5 +32,5 @@ Route::get('/remove-form-cart',['uses'=> 'ShoppingCartController@removeCartItem'
 // Route::get('/add-to-cart/{id}', 'ShoppingCartController@getAddToCart');
 // Route::get('/shopping-cart', 'ShoppingCartController@getCartItems');
 Route::get('/checkout',['uses'=> 'ShoppingCartController@getCheckOut','as'=>'getCheckout']);
-Route::post('/checkout',['uses'=> 'Cart@postCheckout','as'=>'postCheckout']);
+//Route::post('/checkout',['uses'=> 'Cart@postCheckout','as'=>'postCheckout']);
 Route::get('/articles',['uses'=>'ArticlesController@index','as'=>'articles.index']);

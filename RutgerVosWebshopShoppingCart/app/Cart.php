@@ -2,6 +2,7 @@
 namespace App;
 use Session;
 
+
 class Cart
 {
     public $items = [];
@@ -64,7 +65,10 @@ class Cart
     public function getItemsFromCart() {
         return $this->items;
     }
-    public function getCheckOut()
+    /*
+    *checking out for cart.
+    */
+    public function getCheckOutCart()
     {
         if (!Session::has('cart')) {
             return view('shoppingcart',['articles'=>null]);
@@ -72,7 +76,10 @@ class Cart
          $oldCart = Session::get('cart');
          $cart = new Cart($oldCart);
          $total = $cart->totalPrice;
-         return view('checkout',['total'=> $total]);
+         return $total;
+         //return redirect()->route('getCheckout',['total'=> $total]);
+
+         //return view('checkout',['total'=> $total]);
 
     }
 }
