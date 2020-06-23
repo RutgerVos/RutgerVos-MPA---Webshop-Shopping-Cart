@@ -13,7 +13,8 @@ class ArticlesTableSeeder extends Seeder
     {
         $Article = new \App\Articles(['name'=>'harry tester',
         'price'=>12,
-        'description'=>'he tests al things that are tested']);
+        'description'=>'he tests al things that are tested',
+        'categorie'=>'']);
         $Article->save();
     }
 }

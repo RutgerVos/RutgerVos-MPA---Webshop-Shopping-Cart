@@ -40,21 +40,19 @@ class Cart
         $this->totalPrice += $item->price;
         Session::put('cart',$this);
     }
-    public function removeOneItem($item, $id){
-        $storedItem = ['qty'=> 0, 'price'=>$item->price,'item'=>$item];
+      /*
+    *a function that remove data based on items values.
+    *
+    */
+    public function removeAllItems($item, $id){
+        //dd($item);
+        foreach($this->items as $item ){
+        if ($item['item']['id'] == $id) {
+            $this->$totalQty-1;
+            $this->$totalPrice-$item['price'];
 
-        if ($this->items) {
-            if (array_key_exists($id,$this->items)) {
-                $storedItem = $this->items[$id];
-            }
         }
-
-        $storedItem['qty']--;
-        $storedItem['price']= $item->price*$storedItem['qty'];
-        $this->items[$id] = $storedItem;
-        $this->totalQty--;
-        $this->totalPrice += $item->price;
-        
+        }
         
     }
 
@@ -80,6 +78,14 @@ class Cart
          //return redirect()->route('getCheckout',['total'=> $total]);
 
          //return view('checkout',['total'=> $total]);
+
+    }
+    public function postCheckOutCart()
+    {
+        DB::table('orders')->insert([
+            ['email' => 'taylor@example.com', 'votes' => 0],
+            ['email' => 'dayle@example.com', 'votes' => 0]
+        ]);
 
     }
 }

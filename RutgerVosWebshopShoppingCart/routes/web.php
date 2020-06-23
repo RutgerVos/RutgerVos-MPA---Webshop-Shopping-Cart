@@ -28,7 +28,7 @@ Route::get('/articles','ArticlesController@index');
 Route::get('/categories','CategoriesController@index');
 Route::get('/add-to-cart/{id}',['uses'=> 'ShoppingCartController@getAddToCart','as'=>'ShoppingCart.getAddToCart']);
 Route::get('/shopping-cart',['uses'=> 'ShoppingCartController@getCartItems','as'=>'ShoppingCart.getCartItems']);
-Route::get('/remove-form-cart',['uses'=> 'ShoppingCartController@removeCartItem','as'=>'ShoppingCart.removeCartItem']);
+Route::get('/remove-form-cart/{id}',['uses'=> 'ShoppingCartController@removeCartItems','as'=>'ShoppingCart.removeCartItems']);
 // Route::get('/add-to-cart/{id}', 'ShoppingCartController@getAddToCart');
 // Route::get('/shopping-cart', 'ShoppingCartController@getCartItems');
 Route::get('/checkout',['uses'=> 'ShoppingCartController@getCheckOut','as'=>'getCheckout']);

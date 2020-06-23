@@ -17,16 +17,14 @@ class ShoppingCartController extends Controller
 
     }
     /**
-     * remove item from the cart.
+     * remove all of one item from the cart.
      */
-    public function removeCartItem($id)
+    public function removeCartItems($id)
         {
             $Article = Articles::find($id);
             $cart = new Cart();
-            $cart->removeOneItem($Article,$Article->id);
-            
-
-
+            $cart->removeAllItems($Article,$Article->id);
+            return view('ShoppingCart.getCartItems');
         }
 
     /**

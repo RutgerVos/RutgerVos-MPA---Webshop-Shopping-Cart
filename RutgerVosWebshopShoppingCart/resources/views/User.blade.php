@@ -23,6 +23,9 @@
         <td>placeholder</td>
         <td>being del</td>
       </tr>
+      <tr>
+        <th>Total price:</th>
+      </tr>
 
     </div>
 @endsection
