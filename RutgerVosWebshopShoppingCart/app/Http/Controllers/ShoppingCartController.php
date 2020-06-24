@@ -24,8 +24,19 @@ class ShoppingCartController extends Controller
             $Article = Articles::find($id);
             $cart = new Cart();
             $cart->removeAllItems($Article,$Article->id);
-            return view('ShoppingCart.getCartItems');
+            return redirect()->route('articles.index');
         }
+
+         /**
+     * equal all of one item to a qty from the cart.
+     */
+    public function equalCartItems($id)
+    {
+        $Article = Articles::find($id);
+        $cart = new Cart();
+        $cart->equalAllItems($Article,$Article->id);
+        return redirect()->route('ShoppingCart.getCartItems');
+    }
 
     /**
      * Get items from the cart.

@@ -40,19 +40,46 @@ class Cart
         $this->totalPrice += $item->price;
         Session::put('cart',$this);
     }
-      /*
+
+    /**
+     * 
     *a function that remove data based on items values.
     *
     */
     public function removeAllItems($item, $id){
         //dd($item);
         foreach($this->items as $item ){
-        if ($item['item']['id'] == $id) {
-            $this->$totalQty-1;
-            $this->$totalPrice-$item['price'];
+            if ($item['item']['id'] == $id) {
+                $this->totalQty--;
+                $this->totalPrice-$item['price'];
+                Session::remove('cart',$this);
 
+            }
         }
+        
+    }
+    /**
+     * 
+    *a function that equal data based on items values.
+    *
+    */
+    public function equalAllItems($item, $id) {
+        $quantity = $_GET["quantity"];
+        $storedItem = ['qty'=> 0, 'price'=>$item->price,'item'=>$item];
+        if ($this->items) {
+            if (array_key_exists($id,$this->items)) {
+                $storedItem = $this->items[$id];
+            }
         }
+        if ($item['id'] == $id) {        
+            $this->totalQty = $quantity;
+            $this->totalPrice = $item['price'] * $quantity;
+            $storedItem['qty'] = $quantity;
+            $storedItem['price']= $item->price*$storedItem['qty'];
+            $this->items[$id] = $storedItem;
+            Session::put('cart',$this);
+        }
+       
         
     }
 

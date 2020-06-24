@@ -13,9 +13,9 @@ shoppingcart
             <strong>{{$article['item']['name']}}</strong>
             <span class="label label-success">price:€{{$article['price']}}</span>
             <div class="btn-group">
-                <form action="">
+                <form action="{{route('ShoppingCart.equalCartItems',['id'=>$article['item']['id']])}}" method="get">
                 <label for="quantity">Quantity</label>
-                <input type="number" id="quantity" name="quantity" min="1" max="5" value="{{$article['qty']}}">
+                <input type="number" id="quantity" name="quantity" min="1" max="100" value="{{$article['qty']}}">
                 <input type="submit" class='btn btn-outline-danger' value="make equal to selected amount of this product">
                 </form>
                 <div class="btn-group">
