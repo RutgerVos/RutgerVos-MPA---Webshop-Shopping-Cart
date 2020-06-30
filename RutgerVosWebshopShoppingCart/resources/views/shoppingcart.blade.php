@@ -13,9 +13,11 @@ shoppingcart
             <strong>{{$article['item']['name']}}</strong>
             <span class="label label-success">price:€{{$article['price']}}</span>
             <div class="btn-group">
-                <form action="{{route('ShoppingCart.equalCartItems',['id'=>$article['item']['id']])}}" method="get">
+                <form action="{{route('ShoppingCart.changeCartItem')}}" method="post">
                 <label for="quantity">Quantity</label>
                 <input type="number" id="quantity" name="quantity" min="1" max="100" value="{{$article['qty']}}">
+                @csrf
+                <input type="hidden" value="{{$article['item']['id']}}" name="id">
                 <input type="submit" class='btn btn-outline-danger' value="make equal to selected amount of this product">
                 </form>
                 <div class="btn-group">

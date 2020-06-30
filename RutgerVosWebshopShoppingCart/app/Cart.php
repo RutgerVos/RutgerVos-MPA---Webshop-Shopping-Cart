@@ -61,28 +61,32 @@ class Cart
     }
     /**
      * 
-    *a function that equal data based on items values.
+    *a function that change data based on items values.
     *
     */
-    public function equalAllItems($item, $id) {
-        $quantity = $_GET["quantity"];
-        // $storedItem = ['qty'=> 0, 'price'=>$item->price,'item'=>$item];
-        // if ($this->items) {
-        //     if (array_key_exists($id,$this->items)) {
-        //         $storedItem = $this->items[$id];
-        //     }
-        // }
+    public function changeQuantity($item, $id, $quantity) { // verander naam naar iets beters
+        // zet $quantity in parameter listr van method
      foreach ($this->items as $item) {
         if ($item['item']['id'] == $id) {
-        $this->totalQty - $item['item']['qty'];
-         $newTotalPrice = $item['item']['qty']*$item['item']['price'];
-         $this->totalPrice = $newTotalPrice;
-         $TotalQty = $item['item']['qty'] = $quantity;
-         $this->totalQty += $TotalQty;
+            $this->quantity = $quantity;
          Session::put('cart',$this);
         }
      }  
         
+    }
+    public function calculateTotalPrice($cartItems){
+        $TotalValuePrice= 0;
+        foreach ($this->items as $item) {
+        $TotalValuePrice + $item['price'];
+        
+        }
+        $TotalValuePrice - $item['price'];
+        return $this->totalPrice;
+    }
+
+    function calculateTotalQuantity(){
+        return $this->totalQty;
+
     }
 
     /**

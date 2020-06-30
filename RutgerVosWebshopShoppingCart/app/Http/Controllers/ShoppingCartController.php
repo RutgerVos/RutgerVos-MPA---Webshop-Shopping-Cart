@@ -30,11 +30,11 @@ class ShoppingCartController extends Controller
          /**
      * equal all of one item to a qty from the cart.
      */
-    public function equalCartItems($id)
+    public function changeCartItem(Request $request)
     {
-        $Article = Articles::find($id);
+        $Article = Articles::find($request->id);
         $cart = new Cart();
-        $cart->equalAllItems($Article,$Article->id);
+        $cart->changeQuantity($Article,$request->id,$request->quantity);
         return redirect()->route('ShoppingCart.getCartItems');
     }
 
@@ -46,7 +46,7 @@ class ShoppingCartController extends Controller
         $cart = new Cart();
         $cartItems = $cart->getItemsFromCart();
 
-        return view('shoppingcart',['articles'=>$cartItems,'totalPrice'=>$cart->totalPrice]);
+        return view('shoppingcart',['articles'=>$cartItems,'totalPrice'=>$cart->calculateTotalPrice($cartItems),'totalQty'=>$cart->calculateTotalQuantity($cartItems)]);
     }
     /*
     *add a item to the cart
