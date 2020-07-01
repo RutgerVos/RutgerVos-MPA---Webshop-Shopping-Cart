@@ -51,8 +51,8 @@ class Cart
         foreach($this->items as $key => $item){
             if ($item['item']['id'] == $id) {
                    $this->totalQty -= $this->items[$key]['qty'];
-                    $this->totalPrice -= $this->items[$key]['qty'] * $this->items[$key]['price'];
-                    unset( $this->items[$key] );
+                    $this->totalPrice -=$this->items[$key]['price'];
+                    unset($this->items[$key]);
                     Session::put('cart',$this);
                     //dd(session('cart'));
             }
@@ -61,30 +61,43 @@ class Cart
     }
     /**
      * 
-    *a function that change data based on items values.
+    *a function that change quantity based on items values.
     *
     */
-    public function changeQuantity($item, $id, $quantity) { // verander naam naar iets beters
-        // zet $quantity in parameter listr van method
-     foreach ($this->items as $item) {
-        if ($item['item']['id'] == $id) {
-            $this->quantity = $quantity;
-         Session::put('cart',$this);
+    public function changeQuantity($item, $id, $quantity) {
+        //zet $quantity in parameter listr van method
+        for ($index=1; $index < count($this->items); $index++) 
+        { 
+            if($this->items[$index]['item']->id = $id) 
+            {
+            $this->items[$index]['qty'] = $quantity;
+            }
         }
-     }  
-        
+        Session::put('cart',$this);
+        // var_dump($this->items);
+        // dd();
     }
+    /*
+    *a function to calcute the total price
+    */
     public function calculateTotalPrice($cartItems){
-        $TotalValuePrice= 0;
+        $totalValuePrice= 0;
         foreach ($this->items as $item) {
-        $TotalValuePrice + $item['price'];
+        $totalValuePrice =+ $item['price'];
         
         }
-        $TotalValuePrice - $item['price'];
+        $totalPrice =+ $totalValuePrice;
         return $this->totalPrice;
     }
-
-    function calculateTotalQuantity(){
+    /*
+    *a function to calcute the total Quantity
+    */
+    function calculateTotalQuantity($cartItems){
+        $TotalValueQuantity= 0;
+        foreach ($this->items as $item) {
+         $TotalValueQuantity =+ $item['qty'];
+        }
+        $totalQty =+ $TotalValueQuantity;
         return $this->totalQty;
 
     }

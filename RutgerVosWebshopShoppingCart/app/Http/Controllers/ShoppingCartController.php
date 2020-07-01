@@ -24,7 +24,7 @@ class ShoppingCartController extends Controller
             $Article = Articles::find($id);
             $cart = new Cart();
             $cart->removeAllItems($Article,$Article->id);
-            return redirect()->route('articles.index');
+            return redirect()->route('ShoppingCart.getCartItems');
         }
 
          /**
