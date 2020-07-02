@@ -112,7 +112,7 @@ class Cart
     /*
     *checking out for cart.
     */
-    public function getCheckOutCart()
+    public function CheckOutCart()
     {
         if (!Session::has('cart')) {
             return view('shoppingcart',['articles'=>null]);
@@ -129,8 +129,10 @@ class Cart
     public function postCheckOutCart()
     {
         DB::table('orders')->insert([
-            ['email' => 'taylor@example.com', 'votes' => 0],
-            ['email' => 'dayle@example.com', 'votes' => 0]
+            ['name' => 'placeholder'],
+            ['price' => 'placeholder'],
+            ['amount' => 'placeholder'],
+            ['detail' => 'placeholder']
         ]);
 
     }

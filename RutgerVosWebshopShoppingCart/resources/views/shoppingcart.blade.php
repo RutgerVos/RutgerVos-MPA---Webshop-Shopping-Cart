@@ -44,7 +44,7 @@ shoppingcart
 <hr>
 <div class="row">
 <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-<a type="button" href="{{ route('getCheckout') }}" class='btn btn-success'value="">Checkout</a>
+<a type="button" href="{{ route('Checkout') }}" class='btn btn-success'value="">Checkout</a>
 </div>
 </div>
 @else

@@ -64,9 +64,9 @@ class ShoppingCartController extends Controller
 
 
     }
-    public function getCheckOut(){
+    public function CheckOut(){
         $cart = new Cart();
-        $total= $cart->getCheckOutCart();
+        $total= $cart->CheckOutCart();
         return view('checkout',['total'=> $total]);
 
     }
