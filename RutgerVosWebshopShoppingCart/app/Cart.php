@@ -64,11 +64,11 @@ class Cart
     *a function that change quantity based on items values.
     *
     */
-    public function changeQuantity($item, $id, $quantity) {
+    public function changeQuantity($item, $id, $quantity,$price) {
         //zet $quantity in parameter listr van method
         for ($index=1; $index < count($this->items); $index++) 
         { 
-            if($this->items[$index]['item']->id = $id) 
+            if($item->id = $id) 
             {
             $this->items[$index]['qty'] = $quantity;
             }
@@ -78,13 +78,14 @@ class Cart
         // dd();
     }
     /*
+    *
     *a function to calcute the total price
+    *
     */
     public function calculateTotalPrice($cartItems){
         $totalValuePrice= 0;
         foreach ($this->items as $item) {
         $totalValuePrice =+ $item['price'];
-        
         }
         $totalPrice =+ $totalValuePrice;
         return $this->totalPrice;
@@ -93,6 +94,7 @@ class Cart
     *a function to calcute the total Quantity
     */
     function calculateTotalQuantity($cartItems){
+        //dd($cartItems);
         $TotalValueQuantity= 0;
         foreach ($this->items as $item) {
          $TotalValueQuantity =+ $item['qty'];

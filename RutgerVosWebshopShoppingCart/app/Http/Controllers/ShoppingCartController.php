@@ -33,8 +33,10 @@ class ShoppingCartController extends Controller
     public function changeCartItem(Request $request)
     {
         $Article = Articles::find($request->id);
+        $price = Articles::find($request->id);
+        //dd($price['price']);
         $cart = new Cart();
-        $cart->changeQuantity($Article,$request->id,$request->quantity);
+        $cart->changeQuantity($Article,$request->id,$request->quantity,$price['price']);
         return redirect()->route('ShoppingCart.getCartItems');
     }
 
