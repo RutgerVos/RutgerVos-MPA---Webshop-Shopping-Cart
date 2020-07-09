@@ -8,7 +8,6 @@ class Cart
     public $items = [];
     public $totalQty = 0;
     public $totalPrice = 0;
-
     /**
      * Construct the ShoppingCart.
      */
@@ -25,7 +24,7 @@ class Cart
     *
     */
     public function add($item, $id){
-        $storedItem = ['qty'=> 0, 'price'=>$item->price,'item'=>$item];
+    $storedItem = ['qty'=> 0, 'price'=>$item->price,'item'=>$item];
 
         if ($this->items) {
             if (array_key_exists($id,$this->items)) {
@@ -66,11 +65,13 @@ class Cart
     */
     public function changeQuantity($item, $id, $quantity,$price) {
         //zet $quantity in parameter listr van method
-        for ($index=1; $index < count($this->items); $index++) 
+        $item[$id]['price'] - $price;
+        $this->totalPrice - $price;
+        for ($index=0; $index < count($this->items); $index++) 
         { 
             if($item->id = $id) 
             {
-            $this->items[$index]['qty'] = $quantity;
+            $this->items[$id]['qty'] = $quantity;
             }
         }
         Session::put('cart',$this);
@@ -123,10 +124,6 @@ class Cart
          $cart = new Cart($oldCart);
          $total = $cart->totalPrice;
          return $total;
-         //return redirect()->route('getCheckout',['total'=> $total]);
-
-         //return view('checkout',['total'=> $total]);
-
     }
     public function postCheckOutCart()
     {
