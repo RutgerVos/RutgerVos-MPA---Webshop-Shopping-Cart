@@ -12,14 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/homePage', function () {
-//     return view('homePage',[
-//        'name' => request('name')
-
-//     ]);
-// });
-
 Auth::routes();
 
 Route::get('/' ,"HomeController@index");
@@ -30,8 +22,6 @@ Route::get('/add-to-cart/{id}',['uses'=> 'ShoppingCartController@getAddToCart','
 Route::get('/shopping-cart',['uses'=> 'ShoppingCartController@getCartItems','as'=>'ShoppingCart.getCartItems']);
 Route::post('/equal-form-cart',['uses'=> 'ShoppingCartController@changeCartItem','as'=>'ShoppingCart.changeCartItem']);
 Route::get('/remove-form-cart/{id}',['uses'=> 'ShoppingCartController@removeCartItems','as'=>'ShoppingCart.removeCartItems']);
-// Route::get('/add-to-cart/{id}', 'ShoppingCartController@getAddToCart');
-// Route::get('/shopping-cart', 'ShoppingCartController@getCartItems');
 Route::get('/checkout',['uses'=> 'ShoppingCartController@CheckOut','as'=>'Checkout']);
 //Route::post('/checkout',['uses'=> 'Cart@postCheckout','as'=>'postCheckout']);
 Route::get('/articles',['uses'=>'ArticlesController@index','as'=>'articles.index']);

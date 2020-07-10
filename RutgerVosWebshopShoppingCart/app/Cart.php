@@ -46,14 +46,12 @@ class Cart
     *
     */
     public function removeAllItems($item, $id){
-        //dd($item['id']);
         foreach($this->items as $key => $item){
             if ($item['item']['id'] == $id) {
                    $this->totalQty -= $this->items[$key]['qty'];
                     $this->totalPrice -=$this->items[$key]['price'];
                     unset($this->items[$key]);
                     Session::put('cart',$this);
-                    //dd(session('cart'));
             }
         }
         
@@ -65,18 +63,19 @@ class Cart
     */
     public function changeQuantity($item, $id, $quantity,$price) {
         //zet $quantity in parameter listr van method
-        $item[$id]['price'] - $price;
-        $this->totalPrice - $price;
+        $this->totalQty -=$this->items[$id]['qty'];
+        $this->totalPrice -=$this->items[$id]['price'];
         for ($index=0; $index < count($this->items); $index++) 
         { 
             if($item->id = $id) 
             {
             $this->items[$id]['qty'] = $quantity;
+            $this->items[$id]['price'] = $price*$quantity;
             }
         }
+        $this->totalPrice +=$this->items[$id]['price'];
+        $this->totalQty +=$this->items[$id]['qty'];
         Session::put('cart',$this);
-        // var_dump($this->items);
-        // dd();
     }
     /*
     *
@@ -95,7 +94,6 @@ class Cart
     *a function to calcute the total Quantity
     */
     function calculateTotalQuantity($cartItems){
-        //dd($cartItems);
         $TotalValueQuantity= 0;
         foreach ($this->items as $item) {
          $TotalValueQuantity =+ $item['qty'];
