@@ -1,11 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-    <?php
-    foreach ($users as $user) {
-    echo $user->name;
-}
-?>
+@foreach($users as $user) 
+{{ $user->name }}
+@endforeach
 <h1>orders:</h1>
 <table class="table table">
     <thead>

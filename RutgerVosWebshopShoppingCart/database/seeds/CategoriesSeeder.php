@@ -11,6 +11,7 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $Categories = new \App\Categories(['name'=>'tester']);
+        $Categories->save();
     }
 }
