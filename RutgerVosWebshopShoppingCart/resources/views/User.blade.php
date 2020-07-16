@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
 @foreach($users as $user) 
-{{ $user->name }}
+username: {{ $user->name }}
 @endforeach
 <h1>orders:</h1>
 <table class="table table">

@@ -58,10 +58,6 @@ class ShoppingCartController extends Controller
         $Article = Articles::find($id);
         $cart = new Cart();
         $cart->add($Article,$Article->id);
-        //Session::put('cart',$cart);
-
-        //$request->session()->put('cart',$cart);
-        //dd($request->session()->get('cart'));
         return redirect()->route('articles.index');
 
 

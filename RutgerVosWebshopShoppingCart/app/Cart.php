@@ -125,12 +125,14 @@ class Cart
     }
     public function postCheckOutCart()
     {
+        for ($i=0; $i < $items.length; $i++) {
         DB::table('orders')->insert([
-            ['name' => 'placeholder'],
-            ['price' => 'placeholder'],
-            ['amount' => 'placeholder'],
-            ['detail' => 'placeholder']
+            ['name' =>$this->items[$i]['name'] ],
+            ['price' =>$this->items[$i]['price'] ],
+            ['amount' => $this->items[$i]['qty']],
+            ['detail' =>'userid']
         ]);
+        }
 
     }
 }
