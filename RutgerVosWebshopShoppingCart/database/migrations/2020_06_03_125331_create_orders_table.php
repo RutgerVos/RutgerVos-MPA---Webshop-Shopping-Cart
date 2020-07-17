@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->decimal('price', 8, 2);
             $table->integer('amount');
-            $table->string('detail');
+            $table->string('userdetail');
             $table->timestamps();
         });
     }

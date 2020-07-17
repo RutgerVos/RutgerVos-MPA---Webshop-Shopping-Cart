@@ -62,6 +62,9 @@ class ShoppingCartController extends Controller
 
 
     }
+     /*
+    *a way to checkout items form cart
+    */
     public function CheckOut(){
         $cart = new Cart();
         $total= $cart->CheckOutCart();

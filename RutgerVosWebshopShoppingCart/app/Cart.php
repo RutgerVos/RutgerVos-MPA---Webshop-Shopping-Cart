@@ -130,7 +130,7 @@ class Cart
             ['name' =>$this->items[$i]['name'] ],
             ['price' =>$this->items[$i]['price'] ],
             ['amount' => $this->items[$i]['qty']],
-            ['detail' =>'userid']
+            ['userdetail' =>'userid']
         ]);
         }
 
