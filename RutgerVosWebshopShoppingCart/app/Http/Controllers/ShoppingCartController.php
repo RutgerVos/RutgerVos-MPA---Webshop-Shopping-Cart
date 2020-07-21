@@ -67,7 +67,8 @@ class ShoppingCartController extends Controller
     */
     public function CheckOut(){
         $cart = new Cart();
-        $total= $cart->CheckOutCart();
+        //$users = User::find(1);
+        $total= $cart->postCheckOutCart();
         return view('checkout',['total'=> $total]);
 
     }
