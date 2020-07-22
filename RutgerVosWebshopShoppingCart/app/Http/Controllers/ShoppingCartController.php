@@ -7,15 +7,6 @@ use App\Articles;
 
 class ShoppingCartController extends Controller
 {
-    
-    // public function addtoCart(){
-    //     $articleid;
-
-    // }
-
-    public function caculateCart(){
-
-    }
     /**
      * remove all of one item from the cart.
      */
@@ -65,10 +56,11 @@ class ShoppingCartController extends Controller
      /*
     *a way to checkout items form cart
     */
-    public function CheckOut(){
+    public function CheckOut(Request $request){
         $cart = new Cart();
-        //$users = User::find(1);
-        $total= $cart->postCheckOutCart();
+        $users = DB::table('users')->get();
+        $Article = Articles::find($request->id);
+        $total= $cart->postCheckOutCart($users);
         return view('checkout',['total'=> $total]);
 
     }

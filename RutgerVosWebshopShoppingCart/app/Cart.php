@@ -123,7 +123,7 @@ class Cart
          $total = $cart->totalPrice;
          return $total;
     }
-    public function postCheckOutCart()
+    public function postCheckOutCart($items)
     {
         for ($i=0; $i < count($items); $i++) {
         DB::table('orders')->insert([
