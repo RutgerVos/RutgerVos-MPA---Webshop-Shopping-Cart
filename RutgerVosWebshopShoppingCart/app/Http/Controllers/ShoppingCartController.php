@@ -56,11 +56,11 @@ class ShoppingCartController extends Controller
      /*
     *a way to checkout items form cart
     */
-    public function CheckOut(Request $request){
+    public function CheckOut(){
         $cart = new Cart();
-        $users = DB::table('users')->get();
-        $Article = Articles::find($request->id);
-        $total= $cart->postCheckOutCart($users);
+        $users = DB::table('users')->pluck('id');
+        $Article = Articles::find();
+        $total= $cart->postCheckOutCart($users,$Article);
         return view('checkout',['total'=> $total]);
 
     }
