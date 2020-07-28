@@ -58,10 +58,10 @@ class ShoppingCartController extends Controller
     */
     public function CheckOut(){
         $cart = new Cart();
-        $users = DB::table('users')->pluck('id');
-        $Article = Articles::find();
-        $total= $cart->postCheckOutCart($users,$Article);
-        return view('checkout',['total'=> $total]);
+        //$users = DB::table('users')->pluck('id');
+       // $Article = Articles::find();
+    //$cart->postCheckOutCart(/*$users,$Article*/);
+        return view('checkout');
 
     }
 
