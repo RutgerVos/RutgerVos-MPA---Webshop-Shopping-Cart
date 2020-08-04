@@ -1,6 +1,7 @@
 <?php
 namespace App;
 use Session;
+use Illuminate\Support\Facades\DB;
 
 
 class Cart
@@ -123,8 +124,11 @@ class Cart
          $total = $cart->totalPrice;
          return $total;
     }
-    public function postCheckOutCart(/*$items,$users*/)
+    public function postCheckOutCart($users,$items)
     {
+        if (!Session::has('cart')) {
+            return view('shoppingcart',['articles'=>null]);
+         }
         for ($i=0; $i < count($items); $i++) {
         DB::table('orders')->insert([
             ['name' =>$this->items[$i]['name'] ],

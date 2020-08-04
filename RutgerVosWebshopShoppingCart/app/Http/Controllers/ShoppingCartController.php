@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Cart;
 use Illuminate\Http\Request;
 use App\Articles;
+use Illuminate\Support\Facades\DB;
 
 class ShoppingCartController extends Controller
 {
@@ -58,9 +59,9 @@ class ShoppingCartController extends Controller
     */
     public function CheckOut(){
         $cart = new Cart();
-        //$users = DB::table('users')->pluck('id');
-       // $Article = Articles::find();
-    //$cart->postCheckOutCart(/*$users,$Article*/);
+        $users = DB::table('users')->pluck('id');
+        $Article = Articles::find();
+    $cart->postCheckOutCart($users,$Article);
         return view('checkout');
 
     }
