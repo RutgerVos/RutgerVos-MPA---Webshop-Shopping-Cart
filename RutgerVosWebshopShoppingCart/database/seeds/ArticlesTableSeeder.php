@@ -21,5 +21,20 @@ class ArticlesTableSeeder extends Seeder
         'description'=>'he tests all things that are tested but again',
         'categorie'=>'']);
         $Article->save();
+        $Article = new \App\Articles(['name'=>'harry tester the quests to test nothing',
+        'price'=>14,
+        'description'=>'he tests all things that are tested but never',
+        'categorie'=>'']);
+        $Article->save();
+        $Article = new \App\Articles(['name'=>'harry tester the quests to test something',
+        'price'=>10,
+        'description'=>'he tests all things that are tested but maybe',
+        'categorie'=>'']);
+        $Article->save();
+        $Article = new \App\Articles(['name'=>'harry tester the quests to......',
+        'price'=>17,
+        'description'=>'he tests all things that are tested but i dont know',
+        'categorie'=>'']);
+        $Article->save();
     }
 }

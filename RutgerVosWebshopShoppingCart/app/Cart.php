@@ -124,19 +124,5 @@ class Cart
          $total = $cart->totalPrice;
          return $total;
     }
-    public function postCheckOutCart($users,$items)
-    {
-        if (!Session::has('cart')) {
-            return view('shoppingcart',['articles'=>null]);
-         }
-        for ($i=0; $i < count($items); $i++) {
-        DB::table('orders')->insert([
-            ['name' =>$this->items[$i]['name'] ],
-            ['price' =>$this->items[$i]['price'] ],
-            ['amount' => $this->items[$i]['qty']],
-            ['userdetail' =>$users->id]
-        ]);
-        }
 
-    }
 }

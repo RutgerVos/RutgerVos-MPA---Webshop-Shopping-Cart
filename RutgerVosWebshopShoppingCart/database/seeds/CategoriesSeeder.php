@@ -13,5 +13,13 @@ class CategoriesSeeder extends Seeder
     {
         $Categories = new \App\Categories(['name'=>'tester']);
         $Categories->save();
+        $Categories = new \App\Categories(['name'=>'books']);
+        $Categories->save();
+        $Categories = new \App\Categories(['name'=>'games']);
+        $Categories->save();
+        $Categories = new \App\Categories(['name'=>'cards']);
+        $Categories->save();
+        $Categories = new \App\Categories(['name'=>'tech']);
+        $Categories->save();
     }
 }

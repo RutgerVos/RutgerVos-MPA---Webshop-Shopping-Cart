@@ -59,12 +59,28 @@ class ShoppingCartController extends Controller
     */
     public function CheckOut(){
         $cart = new Cart();
-        $users = DB::table('users')->pluck('id');
+        //$users = DB::table('users')->pluck('id');
         $Article = Articles::find();
-    $cart->postCheckOutCart($users,$Article);
+        $cart->CheckOutCart();
+        postCheckOutCart($users);
         return view('checkout');
 
     }
+    public function postCheckOutCart($items)
+    {
+        $users = DB::table('users')->pluck('id');
+            if (!Session::has('cart')) {
+                return view('shoppingcart',['articles'=>null]);
+            }
+            for ($i=0; $i < count($items); $i++) {
+                $orders = new orders();
+                $orders->name  =$this->items[$i]['name'];
+                $orders->price  =$this->items[$i]['price'];
+                $orders->amount  = $this->items[$i]['qty'];
+                $orders->userdetail  = $users->id;
+                $orders->save();
+    }
 
 
+}
 }
