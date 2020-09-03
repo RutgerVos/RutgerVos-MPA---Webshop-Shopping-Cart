@@ -122,7 +122,7 @@ class Cart
          $oldCart = Session::get('cart');
          $cart = new Cart($oldCart);
          $total = $cart->totalPrice;
-         return $total;
+         return $this->items;
     }
 
 }
