@@ -69,20 +69,16 @@ class ShoppingCartController extends Controller
     }
     public function postCheckOutCart($items)
     {
-        $users = DB::table('users')->get();
-        
-            // if (!Session::has('cart')) {
-            //     return view('shoppingcart',['articles'=>null]);
-            // }
-            for ($i=0; $i < count($items); $i++) {
-                $orders = new Order();
-                $orders->name  = $items[$i]['name'];
-                $orders->price  = $items[$i]['price'];
-                $orders->amount  = $items[$i]['qty'];
-                $orders->userdetail  = $users->id;
-                $orders->save();
-    }
-
-
+        $users = DB::table('users')->get('id');
+        // var_dump($items);
+        //  dd();
+            foreach($items as $item){
+                $order = new Order();
+                $order->name  = $item['name'];
+                $order->price  = $item['price'];
+                $order->amount  = $item['qty'];
+                $order->userdetail  = $users['id'];
+                $order->save();
+            }
 }
 }
