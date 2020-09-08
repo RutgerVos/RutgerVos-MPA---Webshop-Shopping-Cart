@@ -124,5 +124,10 @@ class Cart
          $total = $cart->totalPrice;
          return $this->items;
     }
+    public function CheckOutCartEnd()
+    {
+        Session::remove('cart',$this);
+
+    }
 
 }

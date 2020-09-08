@@ -64,21 +64,34 @@ class ShoppingCartController extends Controller
         //$Article = Articles::find();
         $cart->CheckOutCart();
         $this->postCheckOutCart($items);
+        $cart->CheckOutCartEnd();
         return view('checkout');
 
     }
+    /** 
+     * the function made to loop through items/products
+     * the input is item a array
+     * the output is what is inseted into the database
+     * 
+    */
     public function postCheckOutCart($items)
     {
-        $users = DB::table('users')->get('id');
-        // var_dump($items);
-        //  dd();
+        /**
+         * the foreach in this function is made to loop through the items in the cart 
+         * and put in the database and the right columnn.
+         * the variables uses here are for two things the users variable is uses 
+         * to get the userId who is currently ordering.
+         * the order variable is uses to get the order model data uses for the database columns
+         * so the databbase know where to insert the data in the correct table.
+         */
+            $userid = DB::table('users')->get('id');
+            $order = new Order();
             foreach($items as $item){
-                $order = new Order();
                 $order->name  = $item['name'];
                 $order->price  = $item['price'];
                 $order->amount  = $item['qty'];
-                $order->userdetail  = $users['id'];
-                $order->save();
-            }
+                $order->userdetail  = $userid;
+    }
+            $order->save();
 }
 }

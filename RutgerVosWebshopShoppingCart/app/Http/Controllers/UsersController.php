@@ -19,7 +19,7 @@ class UsersController extends Controller
     }
     public function show(Request $request, $id)
     {
-        $value = $request->session()->get('key');
+        $value = $request->session()->get('id');
         
     }
     // Get the currently authenticated user...
