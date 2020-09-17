@@ -140,7 +140,7 @@ class Cart
         return $this->items;
     }
     /**
-     * a function to empty the cart after order has been placed
+     * a function to empty the cart
      */
     public function CheckOutCartEmpty()
     {

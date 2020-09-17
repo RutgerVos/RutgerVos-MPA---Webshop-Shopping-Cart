@@ -11,16 +11,17 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 Auth::routes();
 
-Route::get('/' ,"HomeController@index");
-Route::get('/user',['uses'=> 'UsersController@index','as'=>'user.profile']);
-Route::get('/articles','ArticlesController@index');
-Route::get('/categories','CategoriesController@index');
-Route::get('/add-to-cart/{id}',['uses'=> 'ShoppingCartController@getAddToCart','as'=>'ShoppingCart.getAddToCart']);
-Route::get('/shopping-cart',['uses'=> 'ShoppingCartController@getCartItems','as'=>'ShoppingCart.getCartItems']);
-Route::post('/equal-form-cart',['uses'=> 'ShoppingCartController@changeCartItem','as'=>'ShoppingCart.changeCartItem']);
-Route::get('/remove-form-cart/{id}',['uses'=> 'ShoppingCartController@removeCartItems','as'=>'ShoppingCart.removeCartItems']);
-Route::get('/checkout',['uses'=> 'ShoppingCartController@CheckOut','as'=>'Checkout']);
-Route::get('/articles',['uses'=>'ArticlesController@index','as'=>'articles.index']);
+Route::get('/', "HomeController@index");
+Route::get('/user', ['uses' => 'UsersController@index', 'as' => 'user.profile']);
+Route::get('/articles', 'ArticlesController@index');
+Route::get('/categories', 'CategoriesController@index');
+Route::get('/categorie', 'CategoriesController@categorieArticles');
+Route::get('/add-to-cart/{id}', ['uses' => 'ShoppingCartController@getAddToCart', 'as' => 'ShoppingCart.getAddToCart']);
+Route::get('/shopping-cart', ['uses' => 'ShoppingCartController@getCartItems', 'as' => 'ShoppingCart.getCartItems']);
+Route::post('/equal-form-cart', ['uses' => 'ShoppingCartController@changeCartItem', 'as' => 'ShoppingCart.changeCartItem']);
+Route::get('/remove-form-cart/{id}', ['uses' => 'ShoppingCartController@removeCartItems', 'as' => 'ShoppingCart.removeCartItems']);
+Route::get('/checkout', ['uses' => 'ShoppingCartController@CheckOut', 'as' => 'Checkout']);
+Route::get('/articles', ['uses' => 'ArticlesController@index', 'as' => 'articles.index']);

@@ -45,7 +45,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                     <a class="navbar-brand" href="{{ route('ShoppingCart.getCartItems') }}"><span class='badge'>{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span> shopping cart </a>
-                    
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

@@ -2,30 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
+    /**
+     * a function to get to you're profile
+     */
     public function index()
     {
-     $user = User::find(1)->get();
-     //dd($user);
-    $users = DB::table('users')->get();
-     return view('user', ['users' => $users]);
+        $user = User::find(1)->get();
+        $users = DB::table('users')->get();
+        return view('user', ['users' => $users]);
     }
     public function show(Request $request, $id)
     {
         $value = $request->session()->get('id');
-        
+
     }
     // Get the currently authenticated user...
-// $user = Auth::user();
+    // $user = Auth::user();
 
 // // Get the currently authenticated user's ID...
-// $id = Auth::id();
-    
+    // $id = Auth::id();
+
 }

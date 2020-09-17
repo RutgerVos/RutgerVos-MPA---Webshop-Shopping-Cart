@@ -64,6 +64,7 @@ class ShoppingCartController extends Controller
     }
     /**
      *a way to checkout items form cart
+     *
      */
     public function CheckOut()
     {
@@ -93,15 +94,18 @@ class ShoppingCartController extends Controller
          * the order variable is uses to get the order model data uses for the database columns
          * so the databbase know where to insert the data in the correct table.
          */
-        //$userid = DB::table('users')->get('id');
         $user = DB::table('users')->pluck('id');
         $order = new Order();
-        foreach ($items as $item) {
-            $order->name = $item['name'];
-            $order->price = $item['price'];
-            $order->amount = $item['qty'];
-            $order->userdetail = $user;
-        }
+        $order->userdetail = $user;
         $order->save();
+        foreach ($items as $item) {
+            $orderDetail = new Order_detail();
+            $orderDetail->nameProducts = $item['name'];
+            $orderDetail->Price = $item['price'];
+            $orderDetail->qty = $item['qty'];
+            $orderDetail->orderId = $order->id;
+            $orderdetail->productId = $item['id'];
+            $orderdetail->save();
+        }
     }
 }

@@ -11,7 +11,7 @@ categories
   <div class="row">
   @foreach($categoriesview as $Categorie)
     <div class="col-md-4">
-    <a type='button'href="">{{$Categorie->name}}</a>
+    <a type='button'href="{{ url('/categorie') }}">{{$Categorie->name}}</a>
       <div class="thumbnail">
         <a href="">
           <img src="" alt="" style="">
