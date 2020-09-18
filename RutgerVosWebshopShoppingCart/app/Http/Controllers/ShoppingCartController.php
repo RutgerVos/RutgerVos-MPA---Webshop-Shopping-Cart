@@ -99,7 +99,7 @@ class ShoppingCartController extends Controller
         $order->userdetail = $user;
         $order->save();
         foreach ($items as $item) {
-            $orderDetail = new Order_detail();
+            $orderDetail = new Order_Detail();
             $orderDetail->nameProducts = $item['name'];
             $orderDetail->Price = $item['price'];
             $orderDetail->qty = $item['qty'];
