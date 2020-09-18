@@ -97,6 +97,7 @@ class ShoppingCartController extends Controller
         $order->userdetail = 0;
         $order->save();
         foreach ($items as $item) {
+<<<<<<< HEAD
             $OrderDetail = new OrderDetail();
             $OrderDetail->nameProducts = $item['name'];
             $OrderDetail->price = $item['price'];
@@ -104,6 +105,15 @@ class ShoppingCartController extends Controller
             $OrderDetail->orderId = $order->id;
             $OrderDetail->productId = $item->id;
             $OrderDetail->save();
+=======
+            $orderDetail = new Order_Detail();
+            $orderDetail->nameProducts = $item['name'];
+            $orderDetail->Price = $item['price'];
+            $orderDetail->qty = $item['qty'];
+            $orderDetail->orderId = $order->id;
+            $orderdetail->productId = $item['id'];
+            $orderdetail->save();
+>>>>>>> master
         }
     }
 }
