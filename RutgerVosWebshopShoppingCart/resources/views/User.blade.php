@@ -1,29 +1,27 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-@foreach($users as $user) 
+@foreach($users as $user)
 username: {{ $user->name }}
 @endforeach
 <h1>orders:</h1>
 <table class="table table">
     <thead>
       <tr>
+      <th>orderId</th>
+      <th>item name</th>
         <th>qty</th>
-        <th>item name</th>
         <th>price</th>
-        <th>status</th>
       </tr>
     </thead>
     <tbody>
+    @foreach($OrderDetail as $OrderDetailView)
       <tr>
-        <td>1</td>
-        <td>test</td>
-        <td>placeholder</td>
-        <td>being del</td>
+        <td>{{$OrderDetailView->orderId}}</td>
+        <td>{{$OrderDetailView->nameProducts}}</td>
+        <td>{{$OrderDetailView->qty}}</td>
+        <td>€{{$OrderDetailView->price}}</td>
       </tr>
-      <tr>
-        <th>Total price:</th>
-      </tr>
-
+      @endforeach
     </div>
 @endsection

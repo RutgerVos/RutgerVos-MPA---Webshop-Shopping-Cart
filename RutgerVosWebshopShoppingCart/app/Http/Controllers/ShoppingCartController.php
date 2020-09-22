@@ -7,6 +7,7 @@ use App\Cart;
 use App\Order;
 use App\OrderDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ShoppingCartController extends Controller
 {
@@ -90,30 +91,20 @@ class ShoppingCartController extends Controller
         // to get the userId who is currently ordering.
         // the order variable is uses to get the order model data uses for the database columns
         // so the databbase know where to insert the data in the correct table.
+        // echo (Auth::id());
+        // dd();
 
-        // $user App\User::where('name')->firstOr(['id', 'name'], function () {
-        //  });
         $order = new Order();
-        $order->userdetail = 0;
+        $order->userId = Auth::id();
         $order->save();
         foreach ($items as $item) {
-<<<<<<< HEAD
             $OrderDetail = new OrderDetail();
             $OrderDetail->nameProducts = $item['name'];
             $OrderDetail->price = $item['price'];
             $OrderDetail->qty = $item['qty'];
             $OrderDetail->orderId = $order->id;
-            $OrderDetail->productId = $item->id;
+            $OrderDetail->productId = $item['id'];
             $OrderDetail->save();
-=======
-            $orderDetail = new Order_Detail();
-            $orderDetail->nameProducts = $item['name'];
-            $orderDetail->Price = $item['price'];
-            $orderDetail->qty = $item['qty'];
-            $orderDetail->orderId = $order->id;
-            $orderdetail->productId = $item['id'];
-            $orderdetail->save();
->>>>>>> master
         }
     }
 }
