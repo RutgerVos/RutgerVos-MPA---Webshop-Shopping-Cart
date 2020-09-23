@@ -18,7 +18,7 @@ Route::get('/', "HomeController@index");
 Route::get('/user', ['uses' => 'UsersController@index', 'as' => 'user.profile']);
 Route::get('/articles', 'ArticlesController@index');
 Route::get('/categories', 'CategoriesController@index');
-Route::get('/categorie', 'CategoriesController@categorieArticles');
+Route::get('/categorie/{name}', ['uses' => 'CategoriesController@categorieArticles', 'as' => 'CategoriesController.categorieArticles']);
 Route::get('/add-to-cart/{id}', ['uses' => 'ShoppingCartController@getAddToCart', 'as' => 'ShoppingCart.getAddToCart']);
 Route::get('/shopping-cart', ['uses' => 'ShoppingCartController@getCartItems', 'as' => 'ShoppingCart.getCartItems']);
 Route::post('/equal-form-cart', ['uses' => 'ShoppingCartController@changeCartItem', 'as' => 'ShoppingCart.changeCartItem']);
