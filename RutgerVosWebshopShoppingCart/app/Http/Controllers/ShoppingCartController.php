@@ -63,6 +63,20 @@ class ShoppingCartController extends Controller
 
     }
     /**
+     * add a item to cart form a categorie
+     *
+     * @param int $id
+     */
+    public function AddToCartCategorie($id)
+    {
+        $Article = Articles::find($id);
+        $cart = new Cart();
+        $cart->add($Article, $Article->id);
+        return redirect()->route('articles.index');
+        //return view('CategoriesController.categorieArticles', ['name' => $name]);
+
+    }
+    /**
      *a way to checkout items form cart
      *
      */

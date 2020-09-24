@@ -17,7 +17,7 @@ categorie
         <a href="">
           <img src="" alt="" style="">
           <div class="caption">
-            <a type="button" class="btn btn-outline-primary"href="route(''['id'=> $categorie->price)">add to cart</a>
+            <a type="button" class="btn btn-outline-primary"href="{{route('ShoppingCart.AddToCartCategorie',['id'=> $categorie->id,'name'=>$name])}}">add to cart</a>
           </div>
         </a>
       </div>
