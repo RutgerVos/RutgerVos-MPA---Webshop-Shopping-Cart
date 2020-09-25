@@ -73,7 +73,7 @@ class ShoppingCartController extends Controller
         $cart = new Cart();
         $cart->add($Article, $Article->id);
         //return redirect()->route('articles.index');
-        return view('CategoriesController.categorieArticles', ['name' => $name]);
+        return redirect()->route('CategoriesController.categorieArticles', ['name' => $name]);
 
     }
     /**
