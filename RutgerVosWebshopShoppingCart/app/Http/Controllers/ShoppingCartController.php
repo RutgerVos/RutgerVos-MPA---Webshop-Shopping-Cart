@@ -67,13 +67,13 @@ class ShoppingCartController extends Controller
      *
      * @param int $id
      */
-    public function AddToCartCategorie($id)
+    public function AddToCartCategorie($id, $name)
     {
         $Article = Articles::find($id);
         $cart = new Cart();
         $cart->add($Article, $Article->id);
-        return redirect()->route('articles.index');
-        //return view('CategoriesController.categorieArticles', ['name' => $name]);
+        //return redirect()->route('articles.index');
+        return view('CategoriesController.categorieArticles', ['name' => $name]);
 
     }
     /**
