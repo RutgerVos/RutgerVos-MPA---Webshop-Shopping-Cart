@@ -20,6 +20,9 @@ class UsersController extends Controller
         $OrderDetail = OrderDetail::all();
         return view('user', ['users' => $users, 'OrderDetail' => $OrderDetail]);
     }
+    /**
+     * a function to display id
+     */
     public function show(Request $request, $id)
     {
         $value = $request->session()->get('id');

@@ -35,7 +35,6 @@ class Cart
                 $storedItem = $this->items[$id];
             }
         }
-
         $storedItem['qty']++;
         $storedItem['price'] = $item->price * $storedItem['qty'];
         $storedItem['id'] = $id;
