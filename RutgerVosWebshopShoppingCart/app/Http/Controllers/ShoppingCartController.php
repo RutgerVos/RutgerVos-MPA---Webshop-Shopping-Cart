@@ -105,8 +105,6 @@ class ShoppingCartController extends Controller
         // to get the userId who is currently ordering.
         // the order variable is uses to get the order model data uses for the database columns
         // so the databbase know where to insert the data in the correct table.
-        // echo (Auth::id());
-        // dd();
 
         $order = new Order();
         $order->userId = Auth::id();
