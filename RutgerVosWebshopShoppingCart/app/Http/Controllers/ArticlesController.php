@@ -11,10 +11,10 @@ class ArticlesController extends Controller
         $articles = Articles::all();
         return view('articles', ['articles' => $articles]);
     }
-    public function detail($detail, $name)
+    public function detail($detail, $name, $price, $id)
     {
 
-        return view('articleDetail', ['detail' => $detail, 'name' => $name]);
+        return view('articleDetail', ['detail' => $detail, 'name' => $name, 'price' => $price, 'id' => $id]);
 
     }
 

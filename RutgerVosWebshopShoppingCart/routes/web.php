@@ -24,6 +24,7 @@ Route::get('/add-to-cart/{id}', ['uses' => 'ShoppingCartController@getAddToCart'
 Route::get('/shopping-cart', ['uses' => 'ShoppingCartController@getCartItems', 'as' => 'ShoppingCart.getCartItems']);
 Route::post('/equal-form-cart', ['uses' => 'ShoppingCartController@changeCartItem', 'as' => 'ShoppingCart.changeCartItem']);
 Route::get('/remove-form-cart/{id}', ['uses' => 'ShoppingCartController@removeCartItems', 'as' => 'ShoppingCart.removeCartItems']);
-Route::get('/checkout', ['uses' => 'ShoppingCartController@CheckOut', 'as' => 'Checkout']);
+Route::get('/checkout/{totalPrice}', ['uses' => 'ShoppingCartController@CheckOut', 'as' => 'Checkout']);
 Route::get('/articles', ['uses' => 'ArticlesController@index', 'as' => 'articles.index']);
-Route::get('/articleDetail/{detail},{name}', ['uses' => 'ArticlesController@detail', 'as' => 'articles.detail']);
+Route::get('/articleDetail/{detail},{name},{price},{id}', ['uses' => 'ArticlesController@detail', 'as' => 'articles.detail']);
+Route::get('/articleDetail-add/{id}', ['uses' => 'ShoppingCartController@AddToCartDetail', 'as' => 'ShoppingCart.AddToCartDetail']);

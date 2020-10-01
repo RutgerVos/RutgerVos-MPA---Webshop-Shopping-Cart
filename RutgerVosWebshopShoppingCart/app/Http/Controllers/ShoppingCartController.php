@@ -66,26 +66,39 @@ class ShoppingCartController extends Controller
      * add a item to cart form a categorie
      *
      * @param int $id
+     * @param string $name
      */
     public function AddToCartCategorie($id, $name)
     {
         $Article = Articles::find($id);
         $cart = new Cart();
         $cart->add($Article, $Article->id);
-        //return redirect()->route('articles.index');
         return redirect()->route('CategoriesController.categorieArticles', ['name' => $name]);
+
+    }
+    /**
+     * add a item to cart form a detail page
+     *
+     * @param int $id
+     */
+    public function AddToCartDetail($id)
+    {
+        $Article = Articles::find($id);
+        $cart = new Cart();
+        $cart->add($Article, $Article->id);
+        return redirect()->route('articles.detail', ['detail' => $Article->description, 'name' => $Article->name, 'price' => $Article->price, 'id' => $id]);
 
     }
     /**
      *a way to checkout items form cart
      *
      */
-    public function CheckOut()
+    public function CheckOut($totalPrice)
     {
         $cart = new Cart();
         $items = $cart->getItemsFromCart();
         $cart->CheckOutCart();
-        $this->postCheckOutCart($items);
+        $this->postCheckOutCart($items, $totalPrice);
         $cart->CheckOutCartEmpty();
         return view('checkout');
 
@@ -97,7 +110,7 @@ class ShoppingCartController extends Controller
      *
      * @param array $items
      */
-    public function postCheckOutCart($items)
+    public function postCheckOutCart($items, $total)
     {
         // the foreach in this function is made to loop through the items in the cart
         // and put in the database and the right columnn.
@@ -108,6 +121,7 @@ class ShoppingCartController extends Controller
 
         $order = new Order();
         $order->userId = Auth::id();
+        $order->totalPrice = $total;
         $order->save();
         foreach ($items as $item) {
             $OrderDetail = new OrderDetail();
