@@ -50,7 +50,7 @@ class Cart
      *@param array $item
      *@param int $id
      */
-    public function removeAllItems($item, $id)
+    public function removeItemOfArticle($id)
     {
         foreach ($this->items as $key => $item) {
             if ($item['item']['id'] == $id) {
@@ -74,7 +74,7 @@ class Cart
      */
     public function changeQuantity($item, $id, $quantity, $price)
     {
-        //zet $quantity in parameter listr van method
+        //zet $quantity in parameter list van method
         $this->totalQty -= $this->items[$id]['qty'];
         $this->totalPrice -= $this->items[$id]['price'];
         for ($index = 0; $index < count($this->items); $index++) {

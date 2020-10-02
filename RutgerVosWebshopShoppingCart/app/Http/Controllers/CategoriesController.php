@@ -19,14 +19,15 @@ class CategoriesController extends Controller
     /**
      * a function to see all products of a single categorie
      *
+     * @param string $name
      */
     public function categorieArticles($name)
     {
-        $categorieForArticles = articles::where('categorie', $name)
+        $articlesForCategory = articles::where('categorie', $name)
             ->orderBy('name', 'desc')
             ->take(10)
             ->get();
 
-        return view('categorie', ['categorie' => $categorieForArticles, 'name' => $name]);
+        return view('categorie', ['categorie' => $articlesForCategory, 'name' => $name]);
     }
 }

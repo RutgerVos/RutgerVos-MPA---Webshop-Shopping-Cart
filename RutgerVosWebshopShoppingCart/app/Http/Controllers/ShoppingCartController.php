@@ -18,9 +18,9 @@ class ShoppingCartController extends Controller
      */
     public function removeCartItems($id)
     {
-        $Article = Articles::find($id);
+        $article = Articles::find($id);
         $cart = new Cart();
-        $cart->removeAllItems($Article, $Article->id);
+        $cart->removeItemOfArticle($article->id);
         return redirect()->route('ShoppingCart.getCartItems');
     }
 
@@ -29,12 +29,13 @@ class ShoppingCartController extends Controller
      *
      * @param request $request
      */
-    public function changeCartItem(Request $request)
+    public function changeCartItem(Request $request, $id, $qty)
     {
-        $Article = Articles::find($request->id);
-        $price = Articles::find($request->id);
+        $article = Articles::find($id);
         $cart = new Cart();
-        $cart->changeQuantity($Article, $request->id, $request->quantity, $price['price']);
+        // var_dump($id, $qty);
+        // dd();
+        $cart->changeQuantity($article, $id, $request->quantity, $article->price);
         return redirect()->route('ShoppingCart.getCartItems');
     }
 

@@ -18,8 +18,8 @@ class CreateOrderDetailsTable extends Migration
             $table->string('nameProducts');
             $table->string('qty');
             $table->string('price');
-            $table->string('productId');
-            $table->string('orderId');
+            $table->int('productId');
+            $table->int('orderId');
             $table->timestamps();
 
         });

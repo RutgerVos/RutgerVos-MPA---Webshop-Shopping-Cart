@@ -13,7 +13,7 @@ shoppingcart
             <strong>{{$article['item']['name']}}</strong>
             <span class="label label-success">price:€{{$article['price']}}</span>
             <div class="btn-group">
-                <form action="{{route('ShoppingCart.changeCartItem')}}" method="post">
+                <form action="{{route('ShoppingCart.changeCartItem',['id'=>$article['item']['id'],'qty'=>$article['qty']])}}" method="post">
                 <label for="quantity">Quantity</label>
                 <input type="number" id="quantity" name="quantity" min="1" max="100" value="{{$article['qty']}}">
                 @csrf
