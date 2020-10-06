@@ -11,15 +11,15 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
-        $Categories = new \App\Categories(['name' => 'fruit']);
+        $Categories = new \App\Category(['name' => 'fruit']);
         $Categories->save();
-        $Categories = new \App\Categories(['name' => 'books']);
+        $Categories = new \App\Category(['name' => 'books']);
         $Categories->save();
-        $Categories = new \App\Categories(['name' => 'games']);
+        $Categories = new \App\Category(['name' => 'games']);
         $Categories->save();
-        $Categories = new \App\Categories(['name' => 'cards']);
+        $Categories = new \App\Category(['name' => 'cards']);
         $Categories->save();
-        $Categories = new \App\Categories(['name' => 'tech']);
+        $Categories = new \App\Category(['name' => 'tech']);
         $Categories->save();
     }
 }

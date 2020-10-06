@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Articles;
+use App\Article;
 
-class ArticlesController extends Controller
+class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Articles::all();
-        return view('articles', ['articles' => $articles]);
+        $articles = Article::all();
+        return view('article', ['articles' => $articles]);
     }
     public function detail($detail, $name, $price, $id)
     {
-        $article = Articles::find($id);
+        $article = Article::find($id);
 
         return view('articleDetail', ['detail' => $detail, 'name' => $name, 'price' => $price, 'id' => $id]);
 

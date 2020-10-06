@@ -11,7 +11,7 @@ categories
   @foreach($categoriesview as $Categorie)
   <div class="row">
     <div class="col-md-4">
-    <a type='button'href="{{ route('CategoriesController.categorieArticles',['name'=>$Categorie->name]) }}">{{$Categorie->name}}</a>
+    <a type='button'href="{{ route('CategoryController.categorieArticles',['name'=>$Categorie->id]) }}">{{$Categorie->name}}</a>
       <div class="thumbnail">
         <a href="">
           <img src="" alt="" style="">

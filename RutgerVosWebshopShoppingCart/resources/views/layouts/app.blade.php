@@ -30,7 +30,7 @@
                 <a class="navbar-brand" href="{{ url('/articles') }}">
                    Articles
                 </a>
-                <a class="navbar-brand" href="{{ url('/categories') }}">
+                <a class="navbar-brand" href="{{ url('/category') }}">
                 categories
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

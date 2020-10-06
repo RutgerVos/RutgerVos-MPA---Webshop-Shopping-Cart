@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Articles;
+use App\Article;
 use App\Cart;
 use App\Order;
 use App\OrderDetail;
@@ -18,7 +18,7 @@ class ShoppingCartController extends Controller
      */
     public function removeCartItems($id)
     {
-        $article = Articles::find($id);
+        $article = Article::find($id);
         $cart = new Cart();
         $cart->removeItemOfArticle($article->id);
         return redirect()->route('ShoppingCart.getCartItems');
@@ -57,10 +57,10 @@ class ShoppingCartController extends Controller
      */
     public function getAddToCart($id)
     {
-        $Article = Articles::find($id);
+        $Article = Article::find($id);
         $cart = new Cart();
         $cart->add($Article, $Article->id);
-        return redirect()->route('articles.index');
+        return redirect()->route('article.index');
 
     }
     /**
@@ -71,10 +71,10 @@ class ShoppingCartController extends Controller
      */
     public function AddToCartCategorie($id, $name)
     {
-        $Article = Articles::find($id);
+        $Article = Article::find($id);
         $cart = new Cart();
         $cart->add($Article, $Article->id);
-        return redirect()->route('CategoriesController.categorieArticles', ['name' => $name]);
+        return redirect()->route('CategoryController.categorieArticles', ['name' => $name]);
 
     }
     /**
@@ -84,10 +84,10 @@ class ShoppingCartController extends Controller
      */
     public function AddToCartDetail($id)
     {
-        $Article = Articles::find($id);
+        $Article = Article::find($id);
         $cart = new Cart();
         $cart->add($Article, $Article->id);
-        return redirect()->route('articles.detail', ['detail' => $Article->description, 'name' => $Article->name, 'price' => $Article->price, 'id' => $id]);
+        return redirect()->route('article.detail', ['detail' => $Article->description, 'name' => $Article->name, 'price' => $Article->price, 'id' => $id]);
 
     }
     /**
