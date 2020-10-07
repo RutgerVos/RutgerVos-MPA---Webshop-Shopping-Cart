@@ -1,23 +1,22 @@
 @extends('layouts.app')
 @section('title')
-categorie
+category
 @endsection
 @section('content')
     <div class="container">
-<h1>{{$name}}</h1>
+<h1>placeholder name:</h1>
 <body>
-@foreach($categorie->chunk(3) as $categorieview)
 <div class="container">
   <div class="row">
-  @foreach($categorieview as $categorie)
+  @foreach($article->articles as $articles)
   <div class="col-md-4">
-  <h2>{{$categorie->name}}</h2>
-  <div><p>price:€{{$categorie->price}}</p></div>
+  <h2>{{$articles->name}}</h2>
+  <div><p>price:€{{$articles->price}}</p></div>
       <div class="thumbnail">
         <a href="">
           <img src="" alt="" style="">
           <div class="caption">
-            <a type="button" class="btn btn-outline-primary"href="{{route('ShoppingCart.AddToCartCategorie',['id'=> $categorie->id,'name'=>$name])}}">add to cart</a>
+            <a type="button" class="btn btn-outline-primary"href="{{route('ShoppingCart.AddToCartCategory',['id'=> $articles->id,'categoryId'=>$article])}}">add to cart</a>
           </div>
         </a>
       </div>
@@ -25,6 +24,5 @@ categorie
     @endforeach
 </div>
     </div>
-    @endforeach
     </body>
 @endsection

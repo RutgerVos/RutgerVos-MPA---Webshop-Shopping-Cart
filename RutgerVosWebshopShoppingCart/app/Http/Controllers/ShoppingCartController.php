@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\ArticleOrder;
 use App\Cart;
 use App\Order;
-use App\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,7 +31,7 @@ class ShoppingCartController extends Controller
      */
     public function changeCartItem(Request $request, $id, $qty)
     {
-        $article = Articles::find($id);
+        $article = Article::find($id);
         $cart = new Cart();
         // var_dump($id, $qty);
         // dd();
@@ -69,12 +69,12 @@ class ShoppingCartController extends Controller
      * @param int $id
      * @param string $name
      */
-    public function AddToCartCategorie($id, $name)
+    public function AddToCartCategory($id, $categoryId)
     {
         $Article = Article::find($id);
         $cart = new Cart();
         $cart->add($Article, $Article->id);
-        return redirect()->route('CategoryController.categorieArticles', ['name' => $name]);
+        return redirect()->route('CategoryController.categoryArticles', ['id' => $categoryId]);
 
     }
     /**
@@ -111,7 +111,7 @@ class ShoppingCartController extends Controller
      *
      * @param array $items
      */
-    public function postCheckOutCart($items, $total)
+    public function postCheckOutCart($items)
     {
         // the foreach in this function is made to loop through the items in the cart
         // and put in the database and the right columnn.
@@ -122,15 +122,16 @@ class ShoppingCartController extends Controller
 
         $order = new Order();
         $order->userId = Auth::id();
-        $order->totalPrice = $total;
+        $cart = new cart();
+        $order->totalPrice = $cart->getTotalPrice();
         $order->save();
         foreach ($items as $item) {
-            $OrderDetail = new OrderDetail();
-            $OrderDetail->nameProducts = $item['name'];
+            $OrderDetail = new ArticleOrder();
+            // $OrderDetail->nameProducts = $item['name'];
             $OrderDetail->price = $item['price'];
             $OrderDetail->qty = $item['qty'];
-            $OrderDetail->orderId = $order->id;
-            $OrderDetail->productId = $item['id'];
+            $OrderDetail->order_id = $order->id;
+            $OrderDetail->article_id = $item['id'];
             $OrderDetail->save();
         }
     }

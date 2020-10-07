@@ -16,10 +16,11 @@ Auth::routes();
 
 Route::get('/', "HomeController@index");
 Route::get('/user', ['uses' => 'UsersController@index', 'as' => 'user.profile']);
+Route::get('/orderDetail/{id}', ['uses' => 'UsersController@orderDetails', 'as' => 'UsersController.orderDetails']);
 Route::get('/articles', 'ArticleController@index');
 Route::get('/category', 'CategoryController@index');
-Route::get('/add-to-cart-categorie/{id},{name}', ['uses' => 'ShoppingCartController@AddToCartCategorie', 'as' => 'ShoppingCart.AddToCartCategorie']);
-Route::get('/categoryArticles/{name}', ['uses' => 'CategoryController@categorieArticles', 'as' => 'CategoryController.categorieArticles']);
+Route::get('/add-to-cart-categorie/{id},{categoryId}', ['uses' => 'ShoppingCartController@AddToCartCategory', 'as' => 'ShoppingCart.AddToCartCategory']);
+Route::get('/categoryArticles/{id}', ['uses' => 'CategoryController@categoryArticles', 'as' => 'CategoryController.categoryArticles']);
 Route::get('/add-to-cart/{id}', ['uses' => 'ShoppingCartController@getAddToCart', 'as' => 'ShoppingCart.getAddToCart']);
 Route::get('/shopping-cart', ['uses' => 'ShoppingCartController@getCartItems', 'as' => 'ShoppingCart.getCartItems']);
 Route::post('/equal-form-cart/{id},{qty}', ['uses' => 'ShoppingCartController@changeCartItem', 'as' => 'ShoppingCart.changeCartItem']);

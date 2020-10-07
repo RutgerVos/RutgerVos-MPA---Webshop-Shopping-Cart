@@ -147,5 +147,13 @@ class Cart
         Session::remove('cart', $this);
 
     }
+    public function getTotalPrice()
+    {
+        $totalPrice = 0;
+        foreach ($this->items as $article) {
+            $totalPrice += $article['price'];
+        }
+        return $totalPrice;
+    }
 
 }

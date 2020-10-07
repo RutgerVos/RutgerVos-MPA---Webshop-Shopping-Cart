@@ -8,10 +8,10 @@ categories
 <body>
 @foreach($Categories->chunk(3) as $categoriesview)
 <div class="container">
-  @foreach($categoriesview as $Categorie)
+  @foreach($categoriesview as $Category)
   <div class="row">
     <div class="col-md-4">
-    <a type='button'href="{{ route('CategoryController.categorieArticles',['name'=>$Categorie->id]) }}">{{$Categorie->name}}</a>
+    <a type='button'href="{{ route('CategoryController.categoryArticles',['id'=>$Category->id]) }}">{{$Category->name}}</a>
       <div class="thumbnail">
         <a href="">
           <img src="" alt="" style="">

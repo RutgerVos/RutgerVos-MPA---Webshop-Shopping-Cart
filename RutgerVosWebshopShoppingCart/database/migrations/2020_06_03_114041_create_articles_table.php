@@ -16,7 +16,7 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('categoryId');
+            //$table->foreignId('categoryId');
             $table->decimal('price', 8, 2);
             $table->text('description');
             $table->timestamps();

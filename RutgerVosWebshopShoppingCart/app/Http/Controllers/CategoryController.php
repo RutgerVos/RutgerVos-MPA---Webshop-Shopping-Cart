@@ -20,13 +20,15 @@ class CategoryController extends Controller
      *
      * @param string $name
      */
-    public function categorieArticles($id)
+    public function categoryArticles($id)
     {
-        $articlesForCategory = articles::where('categoryId', $id)
-            ->orderBy('name', 'desc')
-            ->take(10)
-            ->get();
+        // $articlesForCategory = article::where('categoryId', $id)
+        //     ->orderBy('name', 'desc')
+        //     ->take(10)
+        //     ->get();
 
-        return view('categoryArticles', ['categorie' => $articlesForCategory, 'name' => $articlesForCategory->name]);
+        $article = Category::find($id);
+
+        return view('categoryArticles', ['article' => $article]);
     }
 }

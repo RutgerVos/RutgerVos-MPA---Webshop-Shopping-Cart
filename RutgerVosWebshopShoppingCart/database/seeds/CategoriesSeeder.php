@@ -11,7 +11,7 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
-        $Categories = new \App\Category(['name' => 'fruit']);
+        $Categories = new \App\Category(['name' => 'tech']);
         $Categories->save();
         $Categories = new \App\Category(['name' => 'books']);
         $Categories->save();
@@ -19,7 +19,7 @@ class CategoriesSeeder extends Seeder
         $Categories->save();
         $Categories = new \App\Category(['name' => 'cards']);
         $Categories->save();
-        $Categories = new \App\Category(['name' => 'tech']);
+        $Categories = new \App\Category(['name' => 'fruit']);
         $Categories->save();
     }
 }
