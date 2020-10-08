@@ -94,12 +94,12 @@ class ShoppingCartController extends Controller
      *a way to checkout items form cart
      *
      */
-    public function CheckOut($totalPrice)
+    public function CheckOut()
     {
         $cart = new Cart();
         $items = $cart->getItemsFromCart();
         $cart->CheckOutCart();
-        $this->postCheckOutCart($items, $totalPrice);
+        $this->postCheckOutCart($items);
         $cart->CheckOutCartEmpty();
         return view('checkout');
 

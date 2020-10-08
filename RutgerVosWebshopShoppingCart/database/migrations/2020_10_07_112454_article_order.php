@@ -15,9 +15,9 @@ class ArticleOrder extends Migration
     {
         Schema::create('article_order', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->unsigned();
+            $table->foreignId('order_id')->nullable()->unsigned();
             $table->foreign('order_id')->references('id')->on('categories');
-            $table->foreignId('article_id')->unsigned();
+            $table->foreignId('article_id')->nullable()->unsigned();
             $table->foreign('article_id')->references('id')->on('articles');
             $table->string('price');
             $table->integer('qty');
